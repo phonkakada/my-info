@@ -1,0 +1,38 @@
+.mainFooter{
+    display: flex;
+    justify-content: space-between;
+    height: 15vh;
+    width: 100vw;
+    align-items: center;
+}
+.credit{
+    margin-left: 3vw;
+}
+.contact{
+    margin-right: 3vw;
+    display: flex;
+}
+.phone-num,.email-mail {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.phone,.email{
+    margin-right: 2vw;
+}
+#social-item{
+    margin-left: 1vw;
+}
+@media only screen and (max-width:900px){
+    .mainFooter{
+        display: block;
+    }
+    .credit{
+        text-align: center;
+    }
+    .contact{
+        display: block;
+    }
+    #social-item{
+        margin-left: 10%;
+    }
+}

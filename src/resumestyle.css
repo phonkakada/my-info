@@ -1,0 +1,154 @@
+.mainResume{
+    width: 100vw;
+    padding-bottom: 100px;
+    background-color: rgb(248, 212, 212);
+}
+.resume-bluedot{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.dot{
+    background-color: blue;
+    width: 1.5vw;
+    height: 2.5vh;
+    
+}
+.resume-dot{
+    margin-left: 2vw;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   font-size: 40px;
+}
+.body-resume{
+    justify-content: center;
+    width: 55vw;
+    height: 100%;
+}
+.exper-down{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+
+}
+.download-cv{
+    height: 6vh;
+    width: 15%;
+    background-color: blue;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    border: none;
+    border-radius: 25px;
+}
+.download-cv:hover{
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid blue;
+    color: black;
+    transition: 0.2s;
+    width: 16%;
+}
+.experiance{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+}
+.experiance-box{
+    display: flex;
+    margin-top: 7vh;
+    background-color: white;
+    padding-bottom: 20vh;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.left-box{
+    width: 50%;
+    display: flex;
+}
+.right-box{
+    width: 50%;
+}
+.left-box-content{
+    margin-top: 5%;
+    text-align: start;
+}
+.date{
+    color: blue;
+    font-weight:bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    
+}
+.position{
+    margin-top: 0px;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+.date,.position,.company-name,.company-locat{
+    margin-left: 3vw;
+}
+.experiance-lable{
+    margin-top: 15vh;
+    text-align: start;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+ }
+.skill-box{
+    width: 55vw;
+}
+.dotdot{
+    background-color: blue;
+    width: .8vw;
+    height: 1.5vh;
+    margin-left: 5vw;
+}
+.skill-language-box{
+    padding-bottom: 10vh;
+    margin-top: 7vh;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.skill,.language{
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: start;
+}
+.skill-items{
+    display: flex;
+    align-items: center;
+}
+.skill-item{
+    margin-left: 3vw;
+}
+@media only screen and (max-width: 900px){
+    .exper-down{
+        display: block;
+    }
+    .download-cv{
+        width: 90%;
+    }
+    .download-cv:hover{
+        transition: 0.5s;
+        width: 100%;
+    }
+    .experiance-lable{
+        text-align: center;
+    }
+    .experiance-box{
+        display: block;
+    }
+    .date,.position,.company-name,.company-locat{
+        margin-left: -30%;
+    }
+    .position{
+        margin-bottom: -20%;
+    }
+}

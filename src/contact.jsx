@@ -1,7 +1,11 @@
-import React from 'react'
+import React , {useEffect , useState} from 'react'
 import './contactstyle.css'
+import { doc } from 'firebase/firestore'
 
 const Contact = () => {
+    useEffect (()=>{
+        document.title = "Contact Me"
+    })
     return (
         <>
             <div className='main-body'>

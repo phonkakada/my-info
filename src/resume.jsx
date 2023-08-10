@@ -1,7 +1,11 @@
-import React from "react";
+import React ,{useEffect , useState} from "react";
 import './resumestyle.css';
 
 const Resume = () => {
+        useEffect(()=>{
+            document.title = "My Resume"
+        })
+
     return (
         <>
             <div className="mainResume">

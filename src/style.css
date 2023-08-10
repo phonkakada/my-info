@@ -134,6 +134,13 @@ a{
     color: white;
     transition: 0.5s;
 }
+.loading{
+    text-align: center;
+}
+.loading-lable{
+    margin-top: 25vh;
+    padding-bottom: 45vh;
+}
 p{
     font-family: Arial, Helvetica, sans-serif;
 }

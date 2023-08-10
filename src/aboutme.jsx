@@ -1,16 +1,9 @@
 import React , {useState , useEffect} from "react"
 import { Link } from "react-router-dom"
-import Pic from './Pic.png'
 import {Personal_Web} from "./database";
 
 const personal = new Personal_Web();
 const AboutMe = () => {
-    const btnproject = document.getElementById('project');
-    if (btnproject){
-        btnproject.addEventListener('click' , ()=>{
-            <Link to='/project'></Link>
-        })
-    }
     const [FirstName , setFirstName] = useState("NULL");
     const [LastName , setLastName] = useState("NULL");
     const [Position , setPosition] = useState("NULL");
@@ -23,6 +16,7 @@ const AboutMe = () => {
     const [Description , setDescription] = useState("NULL")
 
     useEffect( ()=>{
+      document.title = "About Me"
       const mapValue = personal.getInfo();
       mapValue.then((e)=>{
         setFirstName(e.get("FirstName"))
@@ -38,6 +32,15 @@ const AboutMe = () => {
       })
     })
 
+    if (ProfileLink === "NULL"){
+      return (
+        <>
+        <div className="loading">
+          <p className="loading-lable">Loading ...</p>
+        </div>
+        </>
+      )
+    }
     return(
       <>
   <div className='main'>
@@ -69,8 +72,8 @@ const AboutMe = () => {
               <p className='hello'>Hello</p>
               <p className='whoiam'>Here's Who I am & What I do</p>
               <div className='resume-project'>
-                <button className='resume'>Resume</button>
-                <button className='project'>Project</button>
+                <Link to="/resume"><button className='resume'>Resume</button></Link>
+                <Link to="/project"><button className='project'>Project</button></Link>
               </div>
               <p>{Description}</p>
               </div>

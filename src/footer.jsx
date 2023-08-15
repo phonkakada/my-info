@@ -2,7 +2,8 @@ import React ,{useState , useEffect} from "react";
 import './footerstyle.css';
 import {Personal_Web} from "./database";
 
-// const personal = new Personal_Web();
+const personal = new Personal_Web();
+const mapValue = personal.getInfo();
 
  const Footer = () => {
     const [FirstName , setFirstName] = useState("NULL");
@@ -19,21 +20,20 @@ import {Personal_Web} from "./database";
     const [Email , setEmail] = useState("NULL")
 
     useEffect( ()=>{
-    //   const mapValue = personal.getInfo();
-    //   mapValue.then((e)=>{
-    //     setFirstName(e.get("FirstName"))
-    //     setLastName(e.get("LastName"))
-    //     setPosition(e.get("Position"))
-    //     setProfileLink(e.get("Profile_Link"))
-    //     setFacebookLink(e.get("Facebook_Link"))
-    //     setGithubLink(e.get("Github_Link"))
-    //     setPhoneNumber(e.get("Phone_Number"))
-    //     setTelegramLink(e.get("Telegram_Link"))
-    //     setLinkedinLink(e.get("Linkedin"))
-    //     setDescription(e.get("Description"))
-    //     setYear(e.get("Year"))
-    //     setEmail(e.get("Email"))
-    //   })
+      mapValue.then((e)=>{
+        setFirstName(e.get("FirstName"))
+        setLastName(e.get("LastName"))
+        setPosition(e.get("Position"))
+        setProfileLink(e.get("Profile_Link"))
+        setFacebookLink(e.get("Facebook_Link"))
+        setGithubLink(e.get("Github_Link"))
+        setPhoneNumber(e.get("Phone_Number"))
+        setTelegramLink(e.get("Telegram_Link"))
+        setLinkedinLink(e.get("Linkedin"))
+        setDescription(e.get("Description"))
+        setYear(e.get("Year"))
+        setEmail(e.get("Email"))
+      })
     })
     return (
         <>

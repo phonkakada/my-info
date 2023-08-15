@@ -21,8 +21,8 @@ const ProjectCard = () =>{
                     <div className="dot"></div>
                     <p className="myproject-txt">My Project</p>
                 </div>
-                <div className="card">
-
+                <div className="main-card">
+                    <div className="card"></div>
                 </div>
             </div>
         </div>

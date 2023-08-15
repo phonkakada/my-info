@@ -6,36 +6,40 @@ import { render } from "react-dom";
 
 const personal = new Personal_Web();
 
+const InfoValue = personal.getInfo();
+const ExperAmount = personal.getExpe();
+const EducationAmount = personal.getEducation();
+const ExperData = personal.getExperData();
+const EducationData = personal.getEducationData();
+
 const Resume = () => {
         const [CVLink , setCVLink] = useState("NULL");
         const [AmountExper , setAmountExper] = useState(0);
         const [AmountEducation , setAmountEducation] = useState(0);
         const [ExperDatas , setExperDatas] = useState([]);
-
-        // const InfoValue = personal.getInfo();
-        // const ExperAmount = personal.getExpe();
-        // const EducationAmount = personal.getEducation();
-        // const ExperData = personal.getExperData();
+        const [EducationDatas , setEducationDatas] = useState([]);
        
             useEffect(()=>{
-                console.log("HELLO")
+                console.log("Resume")
                 document.title = "My Resume"
     
-                // ExperAmount.then((e)=>{
-                //     setAmountExper(e);
-                // })
+                ExperAmount.then((e)=>{
+                    setAmountExper(e);
+                })
                 
-                // InfoValue.then((e)=>{
-                //     setCVLink(e.get("Link_CV"));
-                // })
-                // EducationAmount.then((e)=>{
-                //     setAmountEducation(e)
-                // })
-                // ExperData.then((e)=>{
-                //    setExperDatas(e)
-                // })
+                InfoValue.then((e)=>{
+                    setCVLink(e.get("Link_CV"));
+                })
+                EducationAmount.then((e)=>{
+                    setAmountEducation(e)
+                })
+                ExperData.then((e)=>{
+                   setExperDatas(e)
+                })
+                EducationData.then((e)=>{
+                    setEducationDatas(e);
+                })
             })
-
     return (
         <>
             <div className="mainResume">
@@ -51,10 +55,10 @@ const Resume = () => {
                                 window.location.href=CVLink;
                             }}>Download CV</button>
                         </div>
-                        <BoxExper Amount={AmountExper} />
+                        <BoxExper Amount={AmountExper} ArrayData={ExperDatas} />
                         <h4 className="experiance-lable">Educations</h4>
                         <BoxEducation
-                            Amount={AmountEducation}
+                            Amount={AmountEducation}  Data={EducationDatas}
                         />
                     </div>
                     <ProfessionalSkill />
@@ -68,7 +72,7 @@ const Resume = () => {
 const BoxExper = ({Amount , ArrayData}) => {
     const boxComponents = [];
     for (let i = 0; i < Amount; i++) {
-      boxComponents.push(<Box key={i} />);
+      boxComponents.push(<Box key={i} Data={ArrayData[i]} />);
     }
     return (
         <div>
@@ -82,56 +86,59 @@ const BoxExper = ({Amount , ArrayData}) => {
 }
 
 const Box = ({Data}) => {
-    return (
-        <>
-            <div className="experiance-box">
-                <div className="left-box">
-                    <div className="left-box-content">
-                        <h4 className="date">{0}</h4>
-                        <p className="position"><i class="bi bi-person-badge-fill"></i>&nbsp;&nbsp;{0}</p>
-                        <p className="company-name"><i class="bi bi-bank"></i>&nbsp;&nbsp;{0}</p>
-                        <p className="company-locat"><i class="bi bi-geo-alt"></i>&nbsp;&nbsp;{0}</p>
+    let ObjData = {};
+    if (Data !== undefined){
+        ObjData = Data;
+        return (
+            <>
+                <div className="experiance-box">
+                    <div className="left-box">
+                        <div className="left-box-content">
+                            <h4 className="date">{ObjData.get("Date")}</h4>
+                            <p className="position"><i class="bi bi-person-badge-fill"></i>&nbsp;&nbsp;{ObjData.get("Position")}</p>
+                            <p className="company-name"><i class="bi bi-bank"></i>&nbsp;&nbsp;{ObjData.get("Company")}</p>
+                            <p className="company-locat"><i class="bi bi-geo-alt"></i>&nbsp;&nbsp;{ObjData.get("Company_Location")}</p>
+                        </div>
+                    </div>
+                    <div className="right-box">
+                        <div className="right-box-content">
+                            <p className="describtion">{ObjData.get("Description")}</p>
+                        </div>
                     </div>
                 </div>
-                <div className="right-box">
-                    <div className="right-box-content">
-                        <p className="describtion">{0}</p>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+            </>
+        )
+    }
 }
 
-const BoxEducation = ({Amount}) => {
+const BoxEducation = ({Amount , Data}) => {
     const EducationBox = [];
 
     for (let i = 0 ; i < Amount ; i++){
-        EducationBox.push(<Education key={i} />)
+        EducationBox.push(<Education key={i} Data={Data[i]} />)
     }
     return (
         <div>
-          {EducationBox.map((EducationBox, index) => (
+          {EducationBox.map((boxComponents, index) => (
             <div key={index} className="BoxExper">
-              {EducationBox}
+              {boxComponents}
             </div>
           ))}
         </div>
       );
 }
 
-const Education = ({ year, position, unversity_name, university_locat, describetions }) => {
-    return (
-        <>
-            <Box
-                year={year}
-                position={position}
-                company_name={unversity_name}
-                company_loca={university_locat}
-                describetions={describetions}
-            />
-        </>
-    )
+const Education = ({ Data }) => {
+    if (Data !== undefined){
+        return (
+            <>
+                <Box
+                    Data={Data}
+                />
+            </>
+        )
+    }
+    
 }
 
 const ProfessionalSkill = () => {

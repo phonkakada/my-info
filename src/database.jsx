@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getFirestore , collection , getCountFromServer , doc , getDoc , documentId} from "firebase/firestore"
+import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD1gdhq2jPe31faoBNdcdNt-5HN9vvGqJs",
@@ -46,13 +47,10 @@ export class Personal_Web{
       const docR = doc(db , "Personal_Web" , "Education")
       const coll = collection(docR , "Education")
       const snapshot = await getCountFromServer(coll)
-      return (snapshot.data().count)
+      return snapshot.data().count
     }
     getExperData = async () =>{
-      let TotalExper = 0;
-      do{
-       TotalExper = await this.getExpe();
-      }while(false);
+      let TotalExper = await this.getExpe();
       const MapData = [];
       for (let i = 1 ; i <= TotalExper ; i++){
         let Command = `Personal_Web/Experience/Experience1/Experience${i}`
@@ -64,6 +62,34 @@ export class Personal_Web{
           const keys = Object.keys(data);
           for (let i = 0 ; i < keys.length ; i++){
             MapTmp.set(keys[i] , data[keys[i]])
+          }
+        }else{
+            console.log("Data not found !...")
+        }
+          while (MapData.length != i){
+            MapData.push(MapTmp)
+          }
+      }
+      return MapData
+    }
+
+    getEducationData = async () =>{
+      let TotalExper = await this.getEducation();
+      console.log(TotalExper)
+      const MapData = [];
+      for (let i = 1 ; i <= TotalExper ; i++){
+        let Command = `Personal_Web/Education/Education/Education${i}`  
+        const docRef = doc(db , Command);
+        const docSnap = await getDoc(docRef);
+        let MapTmp = new Map();
+        console.log(docSnap.data())
+        if (docSnap.exists){
+          if (docSnap.data() !== undefined){
+            const data = docSnap.data();
+            const keys = Object.keys(data);
+            for (let i = 0 ; i < keys.length ; i++){
+              MapTmp.set(keys[i] , data[keys[i]])
+            }
           }
         }else{
             console.log("Data not found !...")

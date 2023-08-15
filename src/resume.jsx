@@ -1,10 +1,40 @@
 import React ,{useEffect , useState} from "react";
+import { Link } from "react-router-dom"
 import './resumestyle.css';
+import {Personal_Web} from "./database";
+import { render } from "react-dom";
+
+const personal = new Personal_Web();
 
 const Resume = () => {
-        useEffect(()=>{
-            document.title = "My Resume"
-        })
+        const [CVLink , setCVLink] = useState("NULL");
+        const [AmountExper , setAmountExper] = useState(0);
+        const [AmountEducation , setAmountEducation] = useState(0);
+        const [ExperDatas , setExperDatas] = useState([]);
+
+        // const InfoValue = personal.getInfo();
+        // const ExperAmount = personal.getExpe();
+        // const EducationAmount = personal.getEducation();
+        // const ExperData = personal.getExperData();
+       
+            useEffect(()=>{
+                console.log("HELLO")
+                document.title = "My Resume"
+    
+                // ExperAmount.then((e)=>{
+                //     setAmountExper(e);
+                // })
+                
+                // InfoValue.then((e)=>{
+                //     setCVLink(e.get("Link_CV"));
+                // })
+                // EducationAmount.then((e)=>{
+                //     setAmountEducation(e)
+                // })
+                // ExperData.then((e)=>{
+                //    setExperDatas(e)
+                // })
+            })
 
     return (
         <>
@@ -17,23 +47,14 @@ const Resume = () => {
                     <div className="body-resume">
                         <div className="exper-down">
                             <h4 className="experiance">Experiance</h4>
-                            <button className="download-cv">Download CV</button>
-
+                            <button className="download-cv" onClick={()=>{
+                                window.location.href=CVLink;
+                            }}>Download CV</button>
                         </div>
-                        <Box
-                            year={"2021-07-08"}
-                            position={"Student"}
-                            company_name={"Royal University of Phnom Penh"}
-                            company_loca={"Phnom Penh"}
-                            describetions={"Hello"}
-                        />
+                        <BoxExper Amount={AmountExper} />
                         <h4 className="experiance-lable">Educations</h4>
-                        <Education
-                            year={"2021-2025"}
-                            position={'Student'}
-                            unversity_name={'RUPP'}
-                            university_locat={'Phnom Penh'}
-                            describetions={"HIIIII"}
+                        <BoxEducation
+                            Amount={AmountEducation}
                         />
                     </div>
                     <ProfessionalSkill />
@@ -44,26 +65,59 @@ const Resume = () => {
     )
 }
 
-const Box = ({ year, position, company_name, company_loca, describetions }) => {
+const BoxExper = ({Amount , ArrayData}) => {
+    const boxComponents = [];
+    for (let i = 0; i < Amount; i++) {
+      boxComponents.push(<Box key={i} />);
+    }
+    return (
+        <div>
+          {boxComponents.map((boxComponent, index) => (
+            <div key={index} className="BoxExper">
+              {boxComponent}
+            </div>
+          ))}
+        </div>
+      );
+}
+
+const Box = ({Data}) => {
     return (
         <>
             <div className="experiance-box">
                 <div className="left-box">
                     <div className="left-box-content">
-                        <h4 className="date">{year}</h4>
-                        <p className="position"><i class="bi bi-person-badge-fill"></i>&nbsp;&nbsp;{position}</p>
-                        <p className="company-name"><i class="bi bi-bank"></i>&nbsp;&nbsp;{company_name}</p>
-                        <p className="company-locat"><i class="bi bi-geo-alt"></i>&nbsp;&nbsp;{company_loca}</p>
+                        <h4 className="date">{0}</h4>
+                        <p className="position"><i class="bi bi-person-badge-fill"></i>&nbsp;&nbsp;{0}</p>
+                        <p className="company-name"><i class="bi bi-bank"></i>&nbsp;&nbsp;{0}</p>
+                        <p className="company-locat"><i class="bi bi-geo-alt"></i>&nbsp;&nbsp;{0}</p>
                     </div>
                 </div>
                 <div className="right-box">
                     <div className="right-box-content">
-                        <p className="describtion">{describetions}</p>
+                        <p className="describtion">{0}</p>
                     </div>
                 </div>
             </div>
         </>
     )
+}
+
+const BoxEducation = ({Amount}) => {
+    const EducationBox = [];
+
+    for (let i = 0 ; i < Amount ; i++){
+        EducationBox.push(<Education key={i} />)
+    }
+    return (
+        <div>
+          {EducationBox.map((EducationBox, index) => (
+            <div key={index} className="BoxExper">
+              {EducationBox}
+            </div>
+          ))}
+        </div>
+      );
 }
 
 const Education = ({ year, position, unversity_name, university_locat, describetions }) => {

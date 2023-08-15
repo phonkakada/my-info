@@ -2,7 +2,7 @@ import React , {useState , useEffect} from "react"
 import { Link } from "react-router-dom"
 import {Personal_Web} from "./database";
 
-const personal = new Personal_Web();
+// const personal = new Personal_Web();
 const AboutMe = () => {
     const [FirstName , setFirstName] = useState("NULL");
     const [LastName , setLastName] = useState("NULL");
@@ -17,19 +17,19 @@ const AboutMe = () => {
 
     useEffect( ()=>{
       document.title = "About Me"
-      const mapValue = personal.getInfo();
-      mapValue.then((e)=>{
-        setFirstName(e.get("FirstName"))
-        setLastName(e.get("LastName"))
-        setPosition(e.get("Position"))
-        setProfileLink(e.get("Profile_Link"))
-        setFacebookLink(e.get("Facebook_Link"))
-        setGithubLink(e.get("Github_Link"))
-        setPhoneNumber(e.get("Phone_Number"))
-        setTelegramLink(e.get("Telegram_Link"))
-        setLinkedinLink(e.get("Linkedin"))
-        setDescription(e.get("Description"))
-      })
+      // const mapValue = personal.getInfo();
+      // mapValue.then((e)=>{
+      //   setFirstName(e.get("FirstName"))
+      //   setLastName(e.get("LastName"))
+      //   setPosition(e.get("Position"))
+      //   setProfileLink(e.get("Profile_Link"))
+      //   setFacebookLink(e.get("Facebook_Link"))
+      //   setGithubLink(e.get("Github_Link"))
+      //   setPhoneNumber(e.get("Phone_Number"))
+      //   setTelegramLink(e.get("Telegram_Link"))
+      //   setLinkedinLink(e.get("Linkedin"))
+      //   setDescription(e.get("Description"))
+      // })
     })
 
     if (ProfileLink === "NULL"){

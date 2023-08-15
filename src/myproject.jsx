@@ -1,4 +1,5 @@
 import React , {useState , useEffect} from "react";
+import './myprojectstyle.css';
 
 const Project = () => {
     useEffect(()=>{
@@ -6,7 +7,25 @@ const Project = () => {
     })
     return (
         <>
-        <p>This is my project</p>
+        <ProjectCard />
+        </>
+    )
+}
+
+const ProjectCard = () =>{
+    return(
+        <>
+        <div className="main">
+            <div className="body-project">
+                <div className="myproject-lable">
+                    <div className="dot"></div>
+                    <p className="myproject-txt">My Project</p>
+                </div>
+                <div className="card">
+
+                </div>
+            </div>
+        </div>
         </>
     )
 }

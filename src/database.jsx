@@ -1,12 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import {getFirestore , doc , getDoc} from "firebase/firestore"
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {getFirestore , collection , getCountFromServer , doc , getDoc , documentId} from "firebase/firestore"
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyD1gdhq2jPe31faoBNdcdNt-5HN9vvGqJs",
   authDomain: "personal-website-3a210.firebaseapp.com",
@@ -21,12 +17,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const db = getFirestore(app);
+const db = getFirestore();
 
 export class Personal_Web{
     // constructor(){}
     getInfo = async () => {
-        console.log("Class Called")
         const InfoData = new Map();
         const docRef = doc(db , "Personal_Web" , "MyInfo");
         const docSnap = await getDoc(docRef);
@@ -40,5 +35,43 @@ export class Personal_Web{
             console.log("Data not found !...")
         }
         return InfoData
+    }
+    getExpe = async () => {
+      const docR = doc(db ,"Personal_Web" , "Experience")
+      const coll = collection(docR ,"Experience1" );
+      const snapshot = await getCountFromServer(coll);
+      return (snapshot.data().count);
+    }
+    getEducation = async () =>{
+      const docR = doc(db , "Personal_Web" , "Education")
+      const coll = collection(docR , "Education")
+      const snapshot = await getCountFromServer(coll)
+      return (snapshot.data().count)
+    }
+    getExperData = async () =>{
+      let TotalExper = 0;
+      do{
+       TotalExper = await this.getExpe();
+      }while(false);
+      const MapData = [];
+      for (let i = 1 ; i <= TotalExper ; i++){
+        let Command = `Personal_Web/Experience/Experience1/Experience${i}`
+        const docRef = doc(db , Command);
+        const docSnap = await getDoc(docRef);
+        let MapTmp = new Map();
+        if (docSnap.exists){
+          const data = docSnap.data();
+          const keys = Object.keys(data);
+          for (let i = 0 ; i < keys.length ; i++){
+            MapTmp.set(keys[i] , data[keys[i]])
+          }
+        }else{
+            console.log("Data not found !...")
+        }
+          while (MapData.length != i){
+            MapData.push(MapTmp)
+          }
+      }
+      return MapData
     }
 }

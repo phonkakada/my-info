@@ -157,15 +157,31 @@ p{
 }
 .container{
     margin-left: 5vw;
-    margin-right: 5vw;
+    margin-right: 5vw; 
 }
-#mylist{
-    display: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+#mylist{ 
+    height: 100vh;
+    width: 100%;
+    float: right;
+    transition: 1s;
+}
+#list-content{
+    height: 100vh;
+    justify-content: space-evenly;
+    width: 0%;
 }
 .list-item{
-    margin-top: 150px;
+    color: rgb(0, 0, 0);
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.list-item:hover{
+    background-color: blue;
+    color: white;
+    /* padding-top: 10vh;
+    padding-right: 30vw;
+    padding-left: 30vw; */
+    /* font-size: 35px; */
 }
 @media only screen and (max-width:900px){
     .menu-items{
@@ -182,6 +198,7 @@ p{
     }
     .position{
         padding-bottom: 10vh;
+        padding-left: 30%;
     }
     .left{
         width: 0%;
@@ -199,6 +216,7 @@ p{
     }
     .list-menu{
         display: block;
+        color: white;
     }
     .resume , .project{
         display: block;
@@ -209,5 +227,7 @@ p{
     .social-content{
         margin-top: 15%;
     }
-
+    #mylist{
+        color: white;
+    }
 }

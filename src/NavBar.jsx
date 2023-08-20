@@ -29,10 +29,12 @@ const NavBar = () =>{
       <div className="container">
       <center>
         <div id="mylist">
-        <Link to="/" className="list-item">About Me</Link><br></br>
-        <Link to="/resume" className="list-item">Resume</Link><br></br>
-        <Link to="/project" className="list-item">Projects</Link><br></br>
-        <Link to="/contact" className="list-item">Contact</Link><br></br>
+          <div id="list-content">
+          <p><Link to="/" className="list-item">About Me</Link></p>
+          <p><Link to="/resume" className="list-item">Resume</Link></p>
+          <p><Link to="/project" className="list-item">Projects</Link></p>
+          <p><Link to="/contact" className="list-item">Contact</Link></p>
+          </div>
         </div>
         </center>
       </div>
@@ -40,10 +42,31 @@ const NavBar = () =>{
     )
   }
 
-  const listmenu = document.getElementById("mylist");
-  if (listmenu){
+  const listmenu = document.getElementById("buttonNavBar");
+  const list_items = document.getElementById("list-content")
+  if (listmenu){ 
+    listmenu.addEventListener('mouseover' , ()=>{
+      document.getElementById("mylist").style.width = "100%" 
+      document.getElementById("mylist").style.marginRight = "-20%" 
+    })
+    list_items.addEventListener("mouseover", () => {
+      document.getElementById("mylist").style.width = "100%" 
+      document.getElementById("mylist").style.marginRight = "-20%" 
+    })
+    listmenu.addEventListener('mouseout' , ()=>{
+      document.getElementById("mylist").style.width = "0%" 
+    })
+    list_items.addEventListener('mouseout' ,() => {
+      document.getElementById("mylist").style.width = "0%" 
+
+    })
     listmenu.addEventListener('click' , ()=>{
-      alert(listmenu.style.display)
+      if (      document.getElementById("mylist").style.width == "0%"){
+        document.getElementById("mylist").style.width = "100%" 
+        document.getElementById("mylist").style.marginRight = "-20%" 
+      }else{
+        document.getElementById("mylist").style.width = "0%";
+      }
     })
   }
 export default NavBar;

@@ -82,7 +82,37 @@ export class Personal_Web{
         const docRef = doc(db , Command);
         const docSnap = await getDoc(docRef);
         let MapTmp = new Map();
-        console.log(docSnap.data())
+        if (docSnap.exists){
+          if (docSnap.data() !== undefined){
+            const data = docSnap.data();
+            const keys = Object.keys(data);
+            for (let i = 0 ; i < keys.length ; i++){
+              MapTmp.set(keys[i] , data[keys[i]])
+            }
+          }
+        }else{
+            console.log("Data not found !...")
+        }
+          while (MapData.length != i){
+            MapData.push(MapTmp)
+          }
+      }
+      return MapData
+    }
+    getProject = async () =>{
+      const docR = doc(db ,"Personal_Web" , "Project")
+      const coll = collection(docR ,"Project" );
+      const snapshot = await getCountFromServer(coll);
+      return (snapshot.data().count);
+    }
+    getProjectData = async () => {
+      let TotalExper = await this.getProject();
+      const MapData = [];
+      for (let i = 1 ; i <= TotalExper ; i++){
+        let Command = `Personal_Web/Project/Project/Project${i}`  
+        const docRef = doc(db , Command);
+        const docSnap = await getDoc(docRef);
+        let MapTmp = new Map();
         if (docSnap.exists){
           if (docSnap.data() !== undefined){
             const data = docSnap.data();

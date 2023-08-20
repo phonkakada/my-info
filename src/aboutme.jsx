@@ -75,7 +75,7 @@ const AboutMe = () => {
                 <Link to="/resume"><button className='resume'>Resume</button></Link>
                 <Link to="/project"><button className='project'>Project</button></Link>
               </div>
-              <p>{Description}</p>
+              <p id="description"></p>
               </div>
           </div>
         </div>
@@ -83,5 +83,18 @@ const AboutMe = () => {
       </>
     )
   }
-
+  let j = 0;
+  let newText = "";
+  const doc = document.getElementById("description");
+  const Text = "HEllo my name is Kakada";
+  const TextAnima = () =>{
+  if (doc){
+    if (j < Text.length){
+      newText += Text.charAt(j)
+      doc.innerHTML = newText;
+      j++;
+    } 
+  }
+}
+TextAnima();
 export default AboutMe;

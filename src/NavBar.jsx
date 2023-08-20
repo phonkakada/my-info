@@ -3,19 +3,6 @@ import './style.css'
 import { Link } from "react-router-dom";
 
 let buttonClick = false
-const ShowList = document.getElementById("mylist")
-const ButtonNav = document.getElementById("buttonNavBar")
-    if (ButtonNav){
-      ButtonNav.addEventListener('click' , ()=>{
-        alert (ShowList.style.display)
-    
-        // if (ShowList.style.display === "none") {
-        //   ShowList.style.display = "block";
-        // } else {
-        //   ShowList.style.display = "none";
-        // }
-      })
-    }
 const NavBar = () =>{
     return (
       <>
@@ -30,8 +17,8 @@ const NavBar = () =>{
             <Link to='/project' className='menu-items'>Project</Link>
             <Link to='/contact' className='menu-items'>Contact</Link>
           </div>
-          {/* <ListMenu /> */}
       </div>
+      <ListMenu />
       </>
     )
   }
@@ -51,5 +38,12 @@ const NavBar = () =>{
       </div>
       </>
     )
+  }
+
+  const listmenu = document.getElementById("mylist");
+  if (listmenu){
+    listmenu.addEventListener('click' , ()=>{
+      alert(listmenu.style.display)
+    })
   }
 export default NavBar;

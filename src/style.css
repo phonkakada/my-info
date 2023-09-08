@@ -162,7 +162,7 @@ p{
 #mylist{ 
     height: 100vh;
     width: 0px; 
-    display: none;
+    background-color: blue; 
     float: right;
     transition: 1s; 
 }
@@ -179,10 +179,6 @@ p{
 .list-item:hover{
     background-color: blue;
     color: white;
-    /* padding-top: 10vh;
-    padding-right: 30vw;
-    padding-left: 30vw; */
-    /* font-size: 35px; */
 }
 @media only screen and (max-width:900px){
     .menu-items{
@@ -230,5 +226,30 @@ p{
     }
     #mylist{
         color: white;
+    }
+    .right-bar{
+        display: none;
+        width: 40vw;
+        background-color: #c5c5e6;
+        margin-top: 89vh;
+        height: 100vh;
+        text-align: start;
+        
+    }
+    .right-bar-items{
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 2vw;
+    }
+    a{
+        color: rgb(69, 60, 60);
+    }
+    .line-right-bar{
+        width: 80%;
+        display: block;
+        background-color: rgb(123, 111, 111);
+        height: .2vh;
+        margin-left: 2vw
+
     }
 }

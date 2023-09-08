@@ -180,6 +180,9 @@ p{
     background-color: blue;
     color: white;
 }
+.right-bar{
+    display: none;
+}
 @media only screen and (max-width:900px){
     .menu-items{
         display: none;

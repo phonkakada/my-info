@@ -8,9 +8,9 @@ const NavBar = () => {
     <>
       <div className='NavBar'>
         <div className='name-position'>
-          <a href='/' className='Name'><h4>Phon Kakada<span> / Junior Developer</span> </h4> </a>
+          <a href='/' className='Name'><h4>Phon Kakada<span className="role"> / Junior Developer</span> </h4> </a>
         </div>
-        <button className="bi bi-list fa-2x" id="buttonNavBar" onClick={DisplayRightBar}></button>
+        <button className="bi bi-list fa-2x" id="buttonNavBar" onClick={() => DisplayRightBar()}></button>
         <div className='menu'>
           <Link to='/' className='menu-items'>About Me</Link>
           <Link to='/resume' className='menu-items'>Resume</Link>

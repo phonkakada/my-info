@@ -17,7 +17,6 @@ const App = () => {
     <NavBar />
     <Routes>
       <Route path='/' element={<AboutMe />}></Route>
-      <Route path='/my-info' element={<AboutMe />}></Route>
       <Route path='/resume' element={<Resume />}></Route>
       <Route path='/project' element={<Project />}></Route>
       <Route path='/contact' element={<Contact />}></Route>

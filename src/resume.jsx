@@ -148,7 +148,6 @@ const ProfessionalSkill = () => {
                 <div className="skill-language-box">
                     <div className="skill-main">
                         <br></br>
-                        <br></br>
                         <h4 className="skill">Professional skillset</h4>
                         <div className="skillbox-content">
                             <div className="skill-items">

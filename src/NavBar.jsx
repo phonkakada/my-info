@@ -4,6 +4,16 @@ import { Link } from "react-router-dom";
 
 let buttonClick = false
 const NavBar = () => {
+  const DisplayRightBar = () => {
+    const RightBar = document.getElementById("right")
+    if (RightBar) {
+      if (RightBar.style.display === "none") {
+        RightBar.style.display = "block";
+      } else {
+        RightBar.style.display = "none";
+      }
+    }
+  }
   return (
     <>
       <div className='NavBar'>
@@ -24,10 +34,11 @@ const NavBar = () => {
 }
 
 const ListMenu = () => {
+
   return (
     <>
       <div className="right-bar" id="right">
-        <p className="right-bar-items"><Link to= "/">Home</Link></p>
+        <p className="right-bar-items"><Link to="/">Home</Link></p>
         <div className="line-right-bar"></div>
         <p className="right-bar-items"><Link to="/resume">Resume</Link></p>
         <div className="line-right-bar"></div>
@@ -39,15 +50,5 @@ const ListMenu = () => {
     </>
   )
 };
-const DisplayRightBar = () => {
-  const RightBar = document.getElementById("right")
-  if (RightBar){
-    if (RightBar.style.display === "none"){
-      RightBar.style.display = "block";
-    }else{
-      RightBar.style.display = "none";
-    }
-  }
-}
 
 export default NavBar;

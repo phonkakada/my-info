@@ -183,6 +183,8 @@ p{
 }
 .right-bar{
     display: none;
+    width: 100vw;
+ 
 }
 .role{
     font-weight: 100;
@@ -236,7 +238,7 @@ p{
     }
     .right-bar{
         display: none;
-        width: 40vw;
+        width: 100%;
         background-color: #c5c5e6;
         margin-top: 89vh;
         height: 100vh;
